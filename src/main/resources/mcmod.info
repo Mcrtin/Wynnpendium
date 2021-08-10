@@ -1,0 +1,16 @@
+[
+{
+  "modid": "wynnpendium",
+  "name": "WynnPendium",
+  "description": "A mod for obtaining analytics about wynncraft and using those to provide public infomation",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["EHTYCSCYTHE"],
+  "credits": "Thanks to Afumi for helping create the specification and getting me to actually make this thing",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
