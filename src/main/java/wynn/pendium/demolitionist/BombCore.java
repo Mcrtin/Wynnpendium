@@ -5,14 +5,14 @@ import net.minecraftforge.common.MinecraftForge;
 
 import java.lang.reflect.Field;
 
-public class demolitionist {
+public class BombCore {
 
     static boolean Enabled = false;
 
     static String bossGUIfield = null;
 
     public static void Init() {
-        MinecraftForge.EVENT_BUS.register(new events());
+        MinecraftForge.EVENT_BUS.register(new BombListener());
     }
 
     public static void Enable() {
@@ -28,6 +28,6 @@ public class demolitionist {
 
     public static void Disable() {
         Enabled = false;
-        bombManager.wipe();
+        BombManager.wipe();
     }
 }

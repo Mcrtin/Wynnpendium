@@ -12,14 +12,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
-import wynn.pendium.demolitionist.demolitionist;
+import wynn.pendium.demolitionist.BombCore;
 import wynn.pendium.gluttony.gluttony;
 import wynn.pendium.hud.hud;
 import wynn.pendium.looter.looter;
 import wynn.pendium.professor.professor;
 
-@Mod(modid = wynnPendium.MODID, name = wynnPendium.NAME, version = wynnPendium.VERSION, clientSideOnly = true)
-public class wynnPendium
+@Mod(modid = ModWynnpendium.MODID, name = ModWynnpendium.NAME, version = ModWynnpendium.VERSION, clientSideOnly = true)
+public class ModWynnpendium
 {
     static final String MODID = "wynnpendium";
     static final String NAME = "WynnPendium";
@@ -38,7 +38,7 @@ public class wynnPendium
         professor.Init();
         looter.Init();
         gluttony.Init();
-        demolitionist.Init();
+        BombCore.Init();
     }
 
     @EventHandler
@@ -79,7 +79,7 @@ public class wynnPendium
         hud.Enable();
         looter.Enable();
         gluttony.Enable();
-        demolitionist.Enable();
+        BombCore.Enable();
     }
 
     private static void disable() {
@@ -87,7 +87,7 @@ public class wynnPendium
         hud.Disable();
         looter.Disable();
         gluttony.Disable();
-        demolitionist.Disable();
+        BombCore.Disable();
     }
 
 

@@ -5,10 +5,10 @@ import net.minecraftforge.common.MinecraftForge;
 import wynn.pendium.Ref;
 import wynn.pendium.WebManager;
 import wynn.pendium.hud.hud;
-import wynn.pendium.professor.node.farming;
-import wynn.pendium.professor.node.fishing;
-import wynn.pendium.professor.node.mining;
-import wynn.pendium.professor.node.woodcutting;
+import wynn.pendium.professor.node.NodeFarming;
+import wynn.pendium.professor.node.NodeFishing;
+import wynn.pendium.professor.node.NodeMining;
+import wynn.pendium.professor.node.NodeWoodcutting;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -21,14 +21,14 @@ public class professor {
     private static boolean speedBomb = false;
 
     public static void Init() {
-        MinecraftForge.EVENT_BUS.register(new events());
+        MinecraftForge.EVENT_BUS.register(new EventListeners());
     }
 
     public static void Enable() {
-        farming.wipe();
-        woodcutting.wipe();
-        mining.wipe();
-        fishing.wipe();
+        NodeFarming.wipe();
+        NodeWoodcutting.wipe();
+        NodeMining.wipe();
+        NodeFishing.wipe();
 
         Enabled = true;
     }
@@ -44,10 +44,10 @@ public class professor {
         for (Matcher node : nodes) {
             BlockPos pos = new BlockPos(Integer.parseInt(node.group("X")), Integer.parseInt(node.group("Y")), Integer.parseInt(node.group("Z")));
             switch (node.group("Type")) {
-                case "FARM": farming.load(pos, node.group("Name"), Integer.parseInt(node.group("Level"))); break;
-                case "WOOD": woodcutting.load(pos, node.group("Name"), Integer.parseInt(node.group("Level"))); break;
-                case "MINE": mining.load(pos, node.group("Name"), Integer.parseInt(node.group("Level"))); break;
-                case "FISH": fishing.load(pos, node.group("Name"), Integer.parseInt(node.group("Level"))); break;
+                case "FARM": NodeFarming.load(pos, node.group("Name"), Integer.parseInt(node.group("Level"))); break;
+                case "WOOD": NodeWoodcutting.load(pos, node.group("Name"), Integer.parseInt(node.group("Level"))); break;
+                case "MINE": NodeMining.load(pos, node.group("Name"), Integer.parseInt(node.group("Level"))); break;
+                case "FISH": NodeFishing.load(pos, node.group("Name"), Integer.parseInt(node.group("Level"))); break;
                 default:
                     hud.consoleOut("Error Loading " + node.group("Type") + " node: " + node.group("X") + ", " + node.group("Y") + ", " + node.group("Z") + " [Lv. " + node.group("Level") + "]" );
             }
@@ -59,7 +59,7 @@ public class professor {
     }
 
     public static boolean nodeExists(BlockPos barrier) {
-        return farming.nodeExists(barrier) || woodcutting.nodeExists(barrier) || mining.nodeExists(barrier) || fishing.nodeExists(barrier);
+        return NodeFarming.nodeExists(barrier) || NodeWoodcutting.nodeExists(barrier) || NodeMining.nodeExists(barrier) || NodeFishing.nodeExists(barrier);
     }
 
 
@@ -78,9 +78,9 @@ public class professor {
         speedBomb = set;
         updateReplenTime(Ref.getStatAmount("Gather Speed", "%"));
 
-        farming.speedBombChange();
-        woodcutting.speedBombChange();
-        mining.speedBombChange();
-        fishing.speedBombChange();
+        NodeFarming.speedBombChange();
+        NodeWoodcutting.speedBombChange();
+        NodeMining.speedBombChange();
+        NodeFishing.speedBombChange();
     }
 }

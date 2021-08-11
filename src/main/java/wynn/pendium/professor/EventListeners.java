@@ -15,14 +15,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
 import wynn.pendium.Ref;
-import wynn.pendium.professor.node.farming;
-import wynn.pendium.professor.node.fishing;
-import wynn.pendium.professor.node.mining;
-import wynn.pendium.professor.node.woodcutting;
-import wynn.pendium.professor.toolHud.scraper;
+import wynn.pendium.professor.node.NodeFarming;
+import wynn.pendium.professor.node.NodeFishing;
+import wynn.pendium.professor.node.NodeMining;
+import wynn.pendium.professor.node.NodeWoodcutting;
+import wynn.pendium.professor.toolHud.ToolScraper;
 import wynn.pendium.professor.toolHud.toolHud;
-import wynn.pendium.professor.xp.xpCalc;
-import wynn.pendium.professor.xp.xpHud;
+import wynn.pendium.professor.xp.ExperienceCalculation;
+import wynn.pendium.professor.xp.HudExperienceBar;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 import static org.lwjgl.opengl.GL11.GL_ALWAYS;
 import static org.lwjgl.opengl.GL11.GL_LEQUAL;
 
-public class events {
+public class EventListeners {
 
     private static Pattern node = Pattern.compile("^.(?<CanHarvest>[ac]).+(?<Profession>Farming|Woodcutting|Mining|Fishing) Lv\\. Min: \\u00A7f(?<Level>\\d+)$");
 
@@ -38,16 +38,16 @@ public class events {
     public void eventHandler(final TickEvent.ClientTickEvent event) {
         if (event.phase.equals(TickEvent.Phase.END) || !professor.Enabled) return;
         if (!Ref.inGame()) {
-            if (Ref.inServer()) xpCalc.reset();
+            if (Ref.inServer()) ExperienceCalculation.reset();
             return;
         }
 
         if (!Ref.mc.inGameHasFocus) {
-            xpCalc.scrapeCompass();
+            ExperienceCalculation.scrapeCompass();
             return;
         }
 
-        xpCalc.checkUpload();
+        ExperienceCalculation.checkUpload();
         //professor.updateReplenTime(Ref.getStatAmount("Gathering speed", "%"));
 
         Matcher match;
@@ -70,33 +70,33 @@ public class events {
                     BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
                     switch (match.group("Profession")) {
                         case "Farming":
-                            farming.register(pos, name, Integer.parseInt(match.group("Level")), match.group("CanHarvest").equals("a"));
+                            NodeFarming.register(pos, name, Integer.parseInt(match.group("Level")), match.group("CanHarvest").equals("a"));
                             break;
                         case "Woodcutting":
-                            woodcutting.register(pos, name, Integer.parseInt(match.group("Level")), match.group("CanHarvest").equals("a"));
+                            NodeWoodcutting.register(pos, name, Integer.parseInt(match.group("Level")), match.group("CanHarvest").equals("a"));
                             break;
                         case "Mining":
-                            mining.register(pos, name, Integer.parseInt(match.group("Level")), match.group("CanHarvest").equals("a"));
+                            NodeMining.register(pos, name, Integer.parseInt(match.group("Level")), match.group("CanHarvest").equals("a"));
                             break;
                         case "Fishing":
-                            fishing.register(pos, name, Integer.parseInt(match.group("Level")), match.group("CanHarvest").equals("a"));
+                            NodeFishing.register(pos, name, Integer.parseInt(match.group("Level")), match.group("CanHarvest").equals("a"));
                             break;
                     }
                     continue;
                 }
 
-                xpCalc.processXP(entity.getCustomNameTag(), entity.getPosition());
+                ExperienceCalculation.processXP(entity.getCustomNameTag(), entity.getPosition());
             }
         }
 
         if (professor.Enabled) {
 
-            scraper.scrapeToolsAndMatts();
+            ToolScraper.scrapeToolsAndMatts();
 
-            if (scraper.Tools[0]) farming.update();
-            if (scraper.Tools[1]) woodcutting.update();
-            if (scraper.Tools[2]) mining.update();
-            if (scraper.Tools[3]) fishing.update();
+            if (ToolScraper.Tools[0]) NodeFarming.update();
+            if (ToolScraper.Tools[1]) NodeWoodcutting.update();
+            if (ToolScraper.Tools[2]) NodeMining.update();
+            if (ToolScraper.Tools[3]) NodeFishing.update();
         }
     }
 
@@ -112,17 +112,17 @@ public class events {
         GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
 
-        if (scraper.Tools[0]) farming.highlight();
-        if (scraper.Tools[1]) woodcutting.highlight();
-        if (scraper.Tools[2]) mining.highlight();
-        if (scraper.Tools[3]) fishing.highlight();
+        if (ToolScraper.Tools[0]) NodeFarming.highlight();
+        if (ToolScraper.Tools[1]) NodeWoodcutting.highlight();
+        if (ToolScraper.Tools[2]) NodeMining.highlight();
+        if (ToolScraper.Tools[3]) NodeFishing.highlight();
 
         if (Ref.Dev() && Ref.mc.player.isSneaking()) {
             GlStateManager.depthFunc(GL_ALWAYS);
-            if (scraper.Tools[0]) farming.highlightDebug();
-            if (scraper.Tools[1]) woodcutting.highlightDebug();
-            if (scraper.Tools[2]) mining.highlightDebug();
-            if (scraper.Tools[3]) fishing.highlightDebug();
+            if (ToolScraper.Tools[0]) NodeFarming.highlightDebug();
+            if (ToolScraper.Tools[1]) NodeWoodcutting.highlightDebug();
+            if (ToolScraper.Tools[2]) NodeMining.highlightDebug();
+            if (ToolScraper.Tools[3]) NodeFishing.highlightDebug();
         }
 
 
@@ -138,7 +138,7 @@ public class events {
     public void eventHandler(final RenderGameOverlayEvent.Text event) {
         if (professor.Enabled && Ref.inGame()) {
             toolHud.showDurability();
-            xpHud.showXP();
+            HudExperienceBar.showXP();
         }
     }
 
@@ -146,7 +146,7 @@ public class events {
     public void eventHandler(final ClientChatReceivedEvent event) {
         if (!Ref.inGame() || !professor.Enabled || event.getType() == ChatType.GAME_INFO) return;
 
-        xpCalc.levelUpDetect(event.getMessage().getUnformattedText());
+        ExperienceCalculation.levelUpDetect(event.getMessage().getUnformattedText());
     }
 
     @SubscribeEvent
@@ -154,6 +154,6 @@ public class events {
         if (!Ref.inGame() || !professor.Enabled) return;
 
         if (event.getGui() instanceof GuiContainer)
-            xpCalc.primeScrapeCompass();
+            ExperienceCalculation.primeScrapeCompass();
     }
 }

@@ -3,10 +3,10 @@ package wynn.pendium.professor.toolHud;
 import net.minecraft.item.ItemStack;
 import wynn.pendium.Ref;
 import wynn.pendium.professor.NodeType;
-import wynn.pendium.professor.node.farming;
-import wynn.pendium.professor.node.fishing;
-import wynn.pendium.professor.node.mining;
-import wynn.pendium.professor.node.woodcutting;
+import wynn.pendium.professor.node.NodeFarming;
+import wynn.pendium.professor.node.NodeFishing;
+import wynn.pendium.professor.node.NodeMining;
+import wynn.pendium.professor.node.NodeWoodcutting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +16,14 @@ import java.util.regex.Pattern;
 import static wynn.pendium.professor.toolHud.toolHud.ActiveTool;
 import static wynn.pendium.professor.toolHud.toolHud.hudList;
 
-public class scraper {
+public class ToolScraper {
 
-    private static Pattern ItemMatcher = Pattern.compile("^\\u00A7f(?<Name>.+)\\u00A76 \\[\\u00A7e(?<Tier>\\u272B+)(?:\\u00A78)?\\u272B*\\u00A76\\]$");
-    private static Pattern ItemScanner = Pattern.compile("^Crafting Material\\n\\n(?<CanUse>.) . (?<Profession>Farming|Woodcutting|Mining|Fishing) Lv\\. Min: (?<Level>\\d+)");
-    private static Pattern ToolMatcher = Pattern.compile("^\\u00A7[0-9a-z]. Gathering (?<Tool>Scythe|Axe|Rod|Pickaxe) T\\d+$");
-    private static Pattern ToolScanner = Pattern.compile("(?<CanUse>.) . (?<Profession>Farming|Woodcutting|Mining|Fishing) Lv\\. Min: (?<Level>\\d+)\\n(?:.|\\n)*?\\nGathering Tool \\[(?<CurDur>\\d+)/(?<MaxDur>\\d+) Durability\\]");
+    private static final Pattern ItemMatcher = Pattern.compile("^\\u00A7f(?<Name>.+)\\u00A76 \\[\\u00A7e(?<Tier>\\u272B+)(?:\\u00A78)?\\u272B*\\u00A76\\]$");
+    private static final Pattern ItemScanner = Pattern.compile("^Crafting Material\\n\\n(?<CanUse>.) . (?<Profession>Farming|Woodcutting|Mining|Fishing) Lv\\. Min: (?<Level>\\d+)");
+    private static final Pattern ToolMatcher = Pattern.compile("^\\u00A7[0-9a-z]. Gathering (?<Tool>Scythe|Axe|Rod|Pickaxe) T\\d+$");
+    private static final Pattern ToolScanner = Pattern.compile("(?<CanUse>.) . (?<Profession>Farming|Woodcutting|Mining|Fishing) Lv\\. Min: (?<Level>\\d+)\\n(?:.|\\n)*?\\nGathering Tool \\[(?<CurDur>\\d+)/(?<MaxDur>\\d+) Durability\\]");
 
-    private static List<DisplayStack> MattList = new ArrayList<>();
+    private static final List<DisplayStack> MattList = new ArrayList<>();
 
     public static boolean[] Tools = {false, false, false, false};
 
@@ -99,10 +99,10 @@ public class scraper {
 
     private static void processLevel(NodeType profession, int level, boolean canUse) {
         switch (profession) {
-            case FARM: farming.updateLevel( level, canUse); break;
-            case WOOD: woodcutting.updateLevel(level, canUse); break;
-            case MINE: mining.updateLevel(level, canUse); break;
-            case FISH: fishing.updateLevel(level, canUse); break;
+            case FARM: NodeFarming.updateLevel( level, canUse); break;
+            case WOOD: NodeWoodcutting.updateLevel(level, canUse); break;
+            case MINE: NodeMining.updateLevel(level, canUse); break;
+            case FISH: NodeFishing.updateLevel(level, canUse); break;
         }
     }
 

@@ -10,7 +10,7 @@ import wynn.pendium.professor.professor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class woodcutting {
+public class NodeWoodcutting {
 
     private static List<Node> nodes = new ArrayList<>();
     private static int playerLevel = 0;

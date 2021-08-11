@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static wynn.pendium.professor.xp.xpHud.updateXPBar;
+import static wynn.pendium.professor.xp.HudExperienceBar.updateXPBar;
 
-public class xpCalc {
+public class ExperienceCalculation {
 
     private static Pattern scanner = Pattern.compile("^(?:x(?<Multiplier>\\d+(?:\\.\\d)?) )?\\[\\+(?<Exp>\\d+) . (?<Profession>Farming|Woodcutting|Mining|Fishing) XP\\] \\[(?<Percent>\\d+)%\\]$");
     private static Pattern levelup = Pattern.compile(" +You are now level (?<Level>\\d+) in . (?<Profession>Farming|Woodcutting|Mining|Fishing)");
@@ -88,10 +88,10 @@ public class xpCalc {
     private static String gainData(String Prof, BlockPos origin, float multiplier, int Exp) {
         Node node = null;
         switch (Prof) {
-            case "FARM": node = farming.getNode(origin); break;
-            case "WOOD": node = woodcutting.getNode(origin); break;
-            case "MINE": node = mining.getNode(origin); break;
-            case "FISH": node = fishing.getNode(origin); break;
+            case "FARM": node = NodeFarming.getNode(origin); break;
+            case "WOOD": node = NodeWoodcutting.getNode(origin); break;
+            case "MINE": node = NodeMining.getNode(origin); break;
+            case "FISH": node = NodeFishing.getNode(origin); break;
         }
         if (node == null) return null;
         node.setHarvestable(false);
@@ -191,25 +191,25 @@ public class xpCalc {
                 case "Farming":
                     farmLvl = Integer.parseInt(lore.group("Level"));
                     processPrepQue("FARM", farmLvl);
-                    farming.updateLevel(farmLvl, true);
+                    NodeFarming.updateLevel(farmLvl, true);
                     tries = 0;
                     break;
                 case "Woodcutting":
                     woodLvl = Integer.parseInt(lore.group("Level"));
                     processPrepQue("WOOD", woodLvl);
-                    woodcutting.updateLevel(woodLvl, true);
+                    NodeWoodcutting.updateLevel(woodLvl, true);
                     tries = 0;
                     break;
                 case "Mining":
                     mineLvl = Integer.parseInt(lore.group("Level"));
                     processPrepQue("MINE", mineLvl);
-                    mining.updateLevel(mineLvl, true);
+                    NodeMining.updateLevel(mineLvl, true);
                     tries = 0;
                     break;
                 case "Fishing":
                     fishLvl = Integer.parseInt(lore.group("Level"));
                     processPrepQue("FISH", fishLvl);
-                    fishing.updateLevel(fishLvl, true);
+                    NodeFishing.updateLevel(fishLvl, true);
                     tries = 0;
                     break;
             }

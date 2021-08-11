@@ -6,7 +6,7 @@ import org.lwjgl.opengl.GL11;
 import wynn.pendium.Ref;
 import wynn.pendium.professor.NodeType;
 
-public class xpHud extends Gui {
+public class HudExperienceBar extends Gui {
 
     private static int Percentage = 0;
     private static int Colour = 0xaa5555ff;

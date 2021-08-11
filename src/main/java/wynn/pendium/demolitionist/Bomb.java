@@ -12,10 +12,10 @@ public class Bomb {
         DXP, DLOOT, PXP, PSPEED, DBOMB, SOUL, ITEM, INGREDIENT, DISGUISE, PARTY, UNKNOWN
     }
 
-    Bomb(Type Type, String Thrower, int Duration) {
-        this.type = Type;
-        this.thrower = Thrower;
-        this.worldStampEnd = Ref.mc.world.getTotalWorldTime() + Duration*1200;
+    Bomb(Type type, String thrower, int duration) {
+        this.type = type;
+        this.thrower = thrower;
+        this.worldStampEnd = Ref.mc.world.getTotalWorldTime() + duration*1200;
     }
 
     void updateTime(int Duration) {

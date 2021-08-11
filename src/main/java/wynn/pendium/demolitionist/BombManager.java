@@ -6,7 +6,7 @@ import wynn.pendium.professor.professor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class bombManager {
+public class BombManager {
 
     private static List<Bomb> bombs = new ArrayList<>();
 

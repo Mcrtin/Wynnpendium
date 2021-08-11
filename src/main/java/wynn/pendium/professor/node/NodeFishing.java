@@ -9,7 +9,7 @@ import wynn.pendium.professor.professor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class fishing {
+public class NodeFishing {
 
     private static List<Node> nodes = new ArrayList<>();
     private static int playerLevel = 0;

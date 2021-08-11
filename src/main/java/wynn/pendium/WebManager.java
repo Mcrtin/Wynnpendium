@@ -27,7 +27,7 @@ public class WebManager {
     private static long lastPolled = 0L;
 
     public static void sendRequest(String[][] Values) {
-        if (!wynnPendium.getOutdated())
+        if (!ModWynnpendium.getOutdated())
             webQueue.add(Values);
         if (!running || lastPolled < System.currentTimeMillis() - 120000) startWebThread();
     }
@@ -58,7 +58,7 @@ public class WebManager {
 
 
                         StringBuilder postData = new StringBuilder();
-                        postData.append("v=").append(wynnPendium.VERSION);
+                        postData.append("v=").append(ModWynnpendium.VERSION);
                         postData.append("&uuid=").append(uuid);
                         for (String[] Value : Values) {
                             postData.append('&').append(URLEncoder.encode(Value[0], "UTF-8")).append('=').append(URLEncoder.encode(Value[1], "UTF-8"));
@@ -90,7 +90,7 @@ public class WebManager {
                         while ((line = rawData.readLine()) != null) {
 
                             if ((format = OUTDATED.matcher(line)).matches()) {
-                                wynnPendium.setOutdated();
+                                ModWynnpendium.setOutdated();
                                 continue;
                             }
 
