@@ -20,9 +20,9 @@ import wynn.pendium.professor.node.NodeFishing;
 import wynn.pendium.professor.node.NodeMining;
 import wynn.pendium.professor.node.NodeWoodcutting;
 import wynn.pendium.professor.toolHud.ToolScraper;
-import wynn.pendium.professor.toolHud.toolHud;
+import wynn.pendium.hud.components.features.ComponentToolDurability;
 import wynn.pendium.professor.xp.ExperienceCalculation;
-import wynn.pendium.professor.xp.HudExperienceBar;
+import wynn.pendium.hud.components.features.HudExperienceBar;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -137,7 +137,7 @@ public class EventListeners {
     @SubscribeEvent
     public void eventHandler(final RenderGameOverlayEvent.Text event) {
         if (professor.Enabled && Ref.inGame()) {
-            toolHud.showDurability();
+            ComponentToolDurability.showDurability();
             HudExperienceBar.showXP();
         }
     }

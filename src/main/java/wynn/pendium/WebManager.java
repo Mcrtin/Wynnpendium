@@ -1,6 +1,6 @@
 package wynn.pendium;
 
-import wynn.pendium.hud.hud;
+import wynn.pendium.hud.Hud;
 import wynn.pendium.professor.professor;
 
 import javax.net.ssl.*;
@@ -100,7 +100,7 @@ public class WebManager {
                             }
 
                             if ((format = MESSAGE_FORMAT.matcher(line)).matches()) {
-                                if (hud.Enabled)
+                                if (Hud.Enabled)
                                     messages.add(line);
                                 continue;
                             }
@@ -113,14 +113,14 @@ public class WebManager {
                             messages.add("z$0xff5555$" + line.replace("$", ":"));
                         }
 
-                        if (!messages.isEmpty()) hud.addMessages(messages);
+                        if (!messages.isEmpty()) Hud.addMessages(messages);
                         if (!nodes.isEmpty()) professor.loadNodes(nodes);
 
                         RetryMul = 1;
                         rawData.close();
 
                         if (MaintenanceTimeout > 0) { // Wait for next maintenance window
-                            hud.consoleOut("\u00A76Server down for Maintenance, Retrying in " + MaintenanceTimeout + "m");
+                            Hud.consoleOut("\u00A76Server down for Maintenance, Retrying in " + MaintenanceTimeout + "m");
                             long check = MaintenanceTimeout * 60000 + System.currentTimeMillis();
                             while (System.currentTimeMillis() < check) {
                                 lastPolled = System.currentTimeMillis();
@@ -139,7 +139,7 @@ public class WebManager {
                     } catch (Exception e) {e.printStackTrace();}
 
                     if (RetryMul > 1) {
-                        hud.consoleOut("Failed to contact Server, Retrying in " + (RetryMul/2) + "m");
+                        Hud.consoleOut("Failed to contact Server, Retrying in " + (RetryMul/2) + "m");
                         Limiter = 250;
                         while (System.currentTimeMillis() < Retry)
                             lastPolled = System.currentTimeMillis();

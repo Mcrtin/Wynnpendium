@@ -4,7 +4,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
 import wynn.pendium.Ref;
 import wynn.pendium.WebManager;
-import wynn.pendium.hud.hud;
+import wynn.pendium.hud.Hud;
 import wynn.pendium.professor.node.NodeFarming;
 import wynn.pendium.professor.node.NodeFishing;
 import wynn.pendium.professor.node.NodeMining;
@@ -49,7 +49,7 @@ public class professor {
                 case "MINE": NodeMining.load(pos, node.group("Name"), Integer.parseInt(node.group("Level"))); break;
                 case "FISH": NodeFishing.load(pos, node.group("Name"), Integer.parseInt(node.group("Level"))); break;
                 default:
-                    hud.consoleOut("Error Loading " + node.group("Type") + " node: " + node.group("X") + ", " + node.group("Y") + ", " + node.group("Z") + " [Lv. " + node.group("Level") + "]" );
+                    Hud.consoleOut("Error Loading " + node.group("Type") + " node: " + node.group("X") + ", " + node.group("Y") + ", " + node.group("Z") + " [Lv. " + node.group("Level") + "]" );
             }
         }
     }

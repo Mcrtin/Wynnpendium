@@ -2,6 +2,8 @@ package wynn.pendium.professor.toolHud;
 
 import net.minecraft.item.ItemStack;
 import wynn.pendium.Ref;
+import wynn.pendium.hud.components.features.ComponentToolDurability;
+import wynn.pendium.hud.components.features.DisplayStack;
 import wynn.pendium.professor.NodeType;
 import wynn.pendium.professor.node.NodeFarming;
 import wynn.pendium.professor.node.NodeFishing;
@@ -13,8 +15,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static wynn.pendium.professor.toolHud.toolHud.ActiveTool;
-import static wynn.pendium.professor.toolHud.toolHud.hudList;
+import static wynn.pendium.hud.components.features.ComponentToolDurability.activeTool;
+import static wynn.pendium.hud.components.features.ComponentToolDurability.hudList;
 
 public class ToolScraper {
 
@@ -30,7 +32,7 @@ public class ToolScraper {
     public static void scrapeToolsAndMatts() {
         MattList.clear();
         Tools[0] = false; Tools[1] = false; Tools[2] = false; Tools[3] = false;
-        ActiveTool = NodeType.NONE;
+        activeTool = NodeType.NONE;
 
         Matcher match;
         for (ItemStack item : Ref.mc.player.inventory.mainInventory) {
@@ -42,7 +44,7 @@ public class ToolScraper {
 
         hudList.clear();
         for (DisplayStack matt : MattList)
-            if (matt.getType().equals(ActiveTool))
+            if (matt.getType().equals(activeTool))
                 hudList.add(matt);
     }
 
@@ -64,8 +66,8 @@ public class ToolScraper {
 
         if (!ItemStack.areItemStacksEqual(Ref.mc.player.getHeldItemMainhand(), tool)) return;
 
-        ActiveTool = toolType;
-        toolHud.update(toolType, match.group("CurDur"), match.group("MaxDur"));
+        activeTool = toolType;
+        ComponentToolDurability.update(toolType, match.group("CurDur"), match.group("MaxDur"));
     }
 
 

@@ -8,7 +8,7 @@ import wynn.pendium.Ref;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Display {
+public class MessageDisplay {
 
     private FontRenderer font = Ref.mc.fontRenderer;
 
@@ -32,7 +32,7 @@ public class Display {
         CENTER
     }
 
-    Display(float x_pos, float y_pos, float size, int x_offset, int y_offset, String align) {
+    MessageDisplay(float x_pos, float y_pos, float size, int x_offset, int y_offset, String align) {
         this.location_x = x_pos;
         this.location_y = y_pos;
         this.size = size;
@@ -42,7 +42,6 @@ public class Display {
         switch (align.toUpperCase()) {
             case "LEFT": this.align = Align.LEFT; break;
             case "RIGHT": this.align = Align.RIGHT; break;
-            case "CENTER": this.align = Align.CENTER; break;
             default: this.align = Align.CENTER; break;
         }
 

@@ -1,20 +1,19 @@
 package wynn.pendium.hud;
 
 import net.minecraftforge.common.MinecraftForge;
-import wynn.pendium.Ref;
 
 import java.util.List;
 
-public class hud {
+public class Hud {
 
     public static boolean Enabled = false;
 
-    static Display main = new Display(0.5f, 3/5f, 1, 0, 0, "center");
-    static Display announcement = new Display(0.5f, 1/5f, 1, 0, 0, "center");
-    static Display console = new Display(0.0f, 0.5f, 0.5f, 10, 0, "left");
+    static MessageDisplay main = new MessageDisplay(0.5f, 3/5f, 1, 0, 0, "center");
+    static MessageDisplay announcement = new MessageDisplay(0.5f, 1/5f, 1, 0, 0, "center");
+    static MessageDisplay console = new MessageDisplay(0.0f, 0.5f, 0.5f, 10, 0, "left");
 
     public static void Init() {
-        MinecraftForge.EVENT_BUS.register(new events());
+        MinecraftForge.EVENT_BUS.register(new HudEvents());
     }
 
     public static void Enable() {

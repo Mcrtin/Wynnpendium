@@ -1,10 +1,8 @@
 package wynn.pendium.gluttony;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import wynn.pendium.Ref;
-import wynn.pendium.hud.hud;
 
 import java.util.ArrayList;
 import java.util.List;

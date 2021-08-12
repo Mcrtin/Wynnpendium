@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static wynn.pendium.professor.xp.HudExperienceBar.updateXPBar;
+import static wynn.pendium.hud.components.features.HudExperienceBar.updateXPBar;
 
 public class ExperienceCalculation {
 

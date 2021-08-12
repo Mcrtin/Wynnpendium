@@ -1,7 +1,9 @@
 package wynn.pendium;
 
+import net.minecraft.command.CommandHandler;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.util.EnumHand;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -12,9 +14,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
+import wynn.pendium.commands.WynnpendiumCommand;
 import wynn.pendium.demolitionist.BombCore;
 import wynn.pendium.gluttony.gluttony;
-import wynn.pendium.hud.hud;
+import wynn.pendium.hud.Hud;
 import wynn.pendium.looter.looter;
 import wynn.pendium.professor.professor;
 
@@ -34,7 +37,7 @@ public class ModWynnpendium
         Ref.isDev = (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
 
         MinecraftForge.EVENT_BUS.register(this);
-        hud.Init();
+        Hud.Init();
         professor.Init();
         looter.Init();
         gluttony.Init();
@@ -44,6 +47,8 @@ public class ModWynnpendium
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+        ClientCommandHandler.instance.registerCommand(new WynnpendiumCommand());
+
         //ClientRegistry.registerKeyBinding(toggle = new KeyBinding("key.wynnpendium.toggle_key", Keyboard.KEY_L, "key.wynnpendium"));
     }
 
@@ -76,7 +81,7 @@ public class ModWynnpendium
 
     private static void enable() {
         professor.Enable();
-        hud.Enable();
+        Hud.Enable();
         looter.Enable();
         gluttony.Enable();
         BombCore.Enable();
@@ -84,7 +89,7 @@ public class ModWynnpendium
 
     private static void disable() {
         professor.Disable();
-        hud.Disable();
+        Hud.Disable();
         looter.Disable();
         gluttony.Disable();
         BombCore.Disable();

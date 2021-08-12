@@ -6,7 +6,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import wynn.pendium.Ref;
 import wynn.pendium.WebManager;
-import wynn.pendium.hud.hud;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
