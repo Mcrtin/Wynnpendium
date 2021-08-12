@@ -1,6 +1,7 @@
 package wynn.pendium.hud.components.features;
 
 import net.minecraft.client.Minecraft;
+import wynn.pendium.Ref;
 
 import java.io.File;
 
@@ -25,6 +26,13 @@ public abstract class WynnpendiumGuiFeature {
 
 
     public abstract void renderDummy(int x, int y, Minecraft mc);
+
+    public abstract void doRender(int x, int y, Minecraft mc);
+
+
+    public void doRender() {
+        doRender(this.getX(), this.getY(), Ref.mc);
+    }
 
 
     public abstract int getWidth();
@@ -60,8 +68,10 @@ public abstract class WynnpendiumGuiFeature {
 
     public void setX(int x) {
         this.x = x;
+        System.out.println("adjusted " + this.getClass().getName() + "'s x value to " + x);
     }
     public void setY(int y) {
         this.y = y;
+        System.out.println("adjusted " + this.getClass().getName() + "'s y value to " + y);
     }
 }

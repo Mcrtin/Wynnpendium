@@ -6,6 +6,10 @@ import java.util.List;
 
 public class FeatureManager {
 
+
+    public static ComponentToolDurability i_componentToolDurability;
+    public static HudExperienceBar        i_hudExperienceBar;
+
     public static List<WynnpendiumGuiFeature> enabledFeatures;
 
 
@@ -16,7 +20,9 @@ public class FeatureManager {
 
     static {
         enabledFeatures = new LinkedList<>();
-        Collections.addAll(enabledFeatures, new HudExperienceBar(), new ComponentToolDurability());
+        i_componentToolDurability = new ComponentToolDurability();
+        i_hudExperienceBar = new HudExperienceBar();
+        Collections.addAll(enabledFeatures, i_componentToolDurability, i_hudExperienceBar);
     }
 
 }

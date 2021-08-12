@@ -2,12 +2,14 @@ package wynn.pendium.hud.screens;
 
 import com.google.common.collect.Maps;
 import javafx.util.Pair;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.util.text.TextComponentString;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import wynn.pendium.Ref;
@@ -41,7 +43,7 @@ public class ScreenEditLocations extends GuiScreen {
 
     @Override
     public void initGui() {
-        for (WynnpendiumGuiFeature feature: FeatureManager.enabledFeatures) {
+        for (WynnpendiumGuiFeature feature : FeatureManager.enabledFeatures) {
             LocationSettingButton button = new LocationSettingButton(feature);
             buttonList.add(button);
             buttonHashMap.put(feature, button);
@@ -55,15 +57,16 @@ public class ScreenEditLocations extends GuiScreen {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 
+        onMouseMove(mouseX, mouseY);
         for (LocationSettingButton button : buttonHashMap.values()) {
-            button.drawButton(Ref.mc, mouseX, mouseY, partialTicks);
+//            button.drawButton(Ref.mc, mouseX, mouseY, partialTicks);
 
             WynnpendiumGuiFeature f = button.component;
 
 
             button.checkHoveredAndDrawBox(f.getX() - f.getWidth() / 2, f.getX() + f.getWidth() / 2, f.getY() - f.getHeight(), f.getY() + f.getHeight() / 2, 1);
         }
-        onMouseMove(mouseX, mouseY);
+        super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     @Override
@@ -119,8 +122,10 @@ public class ScreenEditLocations extends GuiScreen {
     public void onMouseMove(int mouseX, int mouseY) {
         ScaledResolution sr = new ScaledResolution(mc);
         float minecraftScale = sr.getScaleFactor();
-        float floatMouseX = Mouse.getX() / minecraftScale;
-        float floatMouseY = (mc.displayHeight - Mouse.getY()) / minecraftScale;
+        float floatMouseX = mouseX / minecraftScale;
+        float floatMouseY = (mc.displayHeight - mouseY) / minecraftScale;
+        System.out.println("floatMouseX:" + floatMouseX);
+        System.out.println("floatMouseY: " + floatMouseY);
 
         if (dragging != null) {
             LocationSettingButton buttonLocation = buttonHashMap.get(dragging);
@@ -130,38 +135,40 @@ public class ScreenEditLocations extends GuiScreen {
             }
 
 
-            float x = floatMouseX - dragging.getX();
-            float y = floatMouseY - dragging.getY();
+//            float x = floatMouseX- dragging.getX();
+//            float y = floatMouseY - dragging.getY();
 
+            float x = floatMouseX;
+            float y = floatMouseY;
             float scaledX1 = buttonLocation.getBoxXOne() * buttonLocation.getScale();
             float scaledY1 = buttonLocation.getBoxYOne() * buttonLocation.getScale();
             float scaledX2 = buttonLocation.getBoxXTwo() * buttonLocation.getScale();
             float scaledY2 = buttonLocation.getBoxYTwo() * buttonLocation.getScale();
-            float scaledWidth = scaledX2 - scaledX1;
-            float scaledHeight = scaledY2 - scaledY1;
-
-            boolean xSnapped = false;
-            boolean ySnapped = false;
 
 
-            if (!xSnapped) {
-                x -= xOffset;
-            }
 
-            if (!ySnapped) {
-                y -= yOffset;
-            }
+//            x -= xOffset;
+
+//            y -= yOffset;
+
+
 
 //            do update config values here stuff
 
-            System.out.println("setting new things");
-            dragging.setX((int) x);
-            dragging.setY((int) y);
+
+            dragging.setX(mouseX);
+            dragging.setY(mouseY);
 
 
 
         }
     }
+    @Override
+    protected void mouseReleased(int mouseX, int mouseY, int state) {
+        super.mouseReleased(mouseX, mouseY, state);
+        dragging = null;
+    }
+
 
     @Override
     public void onGuiClosed() {

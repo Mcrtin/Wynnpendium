@@ -15,6 +15,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
 import wynn.pendium.Ref;
+import wynn.pendium.hud.components.features.FeatureManager;
+import wynn.pendium.hud.components.features.WynnpendiumGuiFeature;
 import wynn.pendium.professor.node.NodeFarming;
 import wynn.pendium.professor.node.NodeFishing;
 import wynn.pendium.professor.node.NodeMining;
@@ -137,8 +139,8 @@ public class EventListeners {
     @SubscribeEvent
     public void eventHandler(final RenderGameOverlayEvent.Text event) {
         if (professor.Enabled && Ref.inGame()) {
-            ComponentToolDurability.showDurability();
-            HudExperienceBar.showXP();
+
+            FeatureManager.enabledFeatures.forEach(WynnpendiumGuiFeature::doRender);
         }
     }
 

@@ -49,6 +49,32 @@ public class ComponentToolDurability extends WynnpendiumGuiFeature {
         }
     }
 
+    @Override
+    public void doRender(int x, int y, Minecraft mc) {
+
+
+
+        if (activeTool.equals(NodeType.NONE)) return;
+
+
+        drawRect(x - 50, y, x - 50 + Percentage, y + 2, Colour);
+        drawRect(x - 50 + Percentage, y, x + 50, y + 2, 0x77000000);
+        mc.fontRenderer.drawString(Durability, (x - Ref.mc.fontRenderer.getStringWidth(Durability) / 2), y + 4, Colour);
+
+        if (!Ref.mc.inGameHasFocus) return;
+
+        RenderHelper.enableGUIStandardItemLighting();
+        int offset = x - 15 - (hudList.size() * 15) / 2;
+
+        new DisplayStack(activeTool, Ref.mc.player.getHeldItemMainhand(), 1, 0).display(x - Ref.mc.fontRenderer.getStringWidth(Durability) / 2, y - 24);
+        for (DisplayStack item : hudList) {
+            item.display((offset += 15), y + 20);
+        }
+
+
+        GlStateManager.disableLighting();
+    }
+
     public static void showDurability() {
         if (activeTool.equals(NodeType.NONE)) return;
 

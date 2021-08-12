@@ -1,5 +1,6 @@
 package wynn.pendium.hud.components.features;
 
+import javafx.scene.paint.Color;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -31,17 +32,41 @@ public class HudExperienceBar extends WynnpendiumGuiFeature {
                 break;
             case WOOD:
                 Colour = 0xaa00aa00;
-                profession = (level == 0 ? "Woodcutting" : "Woodcutting " + level);
+                profession = "🪓 " + (level == 0 ? "Woodcutting" : "Woodcutting " + level);
                 break;
             case MINE:
                 Colour = 0xaaaa0000;
-                profession = (level == 0 ? "Mining" : "Mining " + level);
+                profession = "\u26CF " + (level == 0 ? "Mining" : "Mining " + level);
                 break;
             case FISH:
                 Colour = 0xaa5555ff;
-                profession = (level == 0 ? "Fishing" : "Fishing " + level);
+                profession = "\uD83D\uDC1F " + (level == 0 ? "Fishing" : "Fishing " + level);
                 break;
+            default:
+                Colour = 0x0000000;
+                profession = "";
         }
+    }
+
+
+    @Override
+    public void doRender(int x, int y, Minecraft mc) {
+
+        if (LastUpdate + 20000 < System.currentTimeMillis()) return;
+
+        String msg = Percentage + "%";
+
+        float scale = 4;
+
+        GlStateManager.disableBlend();
+        GL11.glScalef((float) Math.pow(scale, -1), (float) Math.pow(scale, -1), (float) Math.pow(scale, -1));
+        RenderUtils.drawRect((x - 150) * scale, y * scale, (x - 150 + Percentage * 3) * scale, (y + 2) * scale, Colour);
+        RenderUtils.drawRect((x - 150 + Percentage * 3) * scale, y * scale, (x + 150) * scale, (y + 2) * scale, 0x77000000);
+        GL11.glScalef(scale, scale, scale);
+
+        Ref.mc.fontRenderer.drawString(msg, (x - Ref.mc.fontRenderer.getStringWidth(msg) / 2), y + 4, Colour);
+        Ref.mc.fontRenderer.drawString(profession, (x - Ref.mc.fontRenderer.getStringWidth(profession) / 2), y - 10, Colour);
+        GlStateManager.enableBlend();
     }
 
     public static void showXP() {
