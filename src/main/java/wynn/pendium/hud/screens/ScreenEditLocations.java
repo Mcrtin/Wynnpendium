@@ -1,28 +1,20 @@
 package wynn.pendium.hud.screens;
 
-import com.google.common.collect.Maps;
-import javafx.util.Pair;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.util.text.TextComponentString;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import wynn.pendium.Ref;
 import wynn.pendium.hud.HudEvents;
-import wynn.pendium.hud.components.features.ComponentToolDurability;
-import wynn.pendium.hud.components.features.FeatureManager;
+import wynn.pendium.features.FeatureManager;
 import wynn.pendium.hud.components.features.WynnpendiumGuiFeature;
 import wynn.pendium.hud.components.locationui.LocationSettingButton;
 
-import javax.xml.stream.Location;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ScreenEditLocations extends GuiScreen {
 
@@ -124,8 +116,6 @@ public class ScreenEditLocations extends GuiScreen {
         float minecraftScale = sr.getScaleFactor();
         float floatMouseX = mouseX / minecraftScale;
         float floatMouseY = (mc.displayHeight - mouseY) / minecraftScale;
-        System.out.println("floatMouseX:" + floatMouseX);
-        System.out.println("floatMouseY: " + floatMouseY);
 
         if (dragging != null) {
             LocationSettingButton buttonLocation = buttonHashMap.get(dragging);
@@ -135,21 +125,9 @@ public class ScreenEditLocations extends GuiScreen {
             }
 
 
-//            float x = floatMouseX- dragging.getX();
-//            float y = floatMouseY - dragging.getY();
-
-            float x = floatMouseX;
-            float y = floatMouseY;
-            float scaledX1 = buttonLocation.getBoxXOne() * buttonLocation.getScale();
-            float scaledY1 = buttonLocation.getBoxYOne() * buttonLocation.getScale();
-            float scaledX2 = buttonLocation.getBoxXTwo() * buttonLocation.getScale();
-            float scaledY2 = buttonLocation.getBoxYTwo() * buttonLocation.getScale();
 
 
 
-//            x -= xOffset;
-
-//            y -= yOffset;
 
 
 

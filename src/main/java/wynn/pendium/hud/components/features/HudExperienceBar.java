@@ -58,15 +58,18 @@ public class HudExperienceBar extends WynnpendiumGuiFeature {
 
         float scale = 4;
 
-        GlStateManager.disableBlend();
         GL11.glScalef((float) Math.pow(scale, -1), (float) Math.pow(scale, -1), (float) Math.pow(scale, -1));
-        RenderUtils.drawRect((x - 150) * scale, y * scale, (x - 150 + Percentage * 3) * scale, (y + 2) * scale, Colour);
-        RenderUtils.drawRect((x - 150 + Percentage * 3) * scale, y * scale, (x + 150) * scale, (y + 2) * scale, 0x77000000);
+//        RenderUtils.drawRect((x - 150) * scale, y * scale, (x - 150 + Percentage * 3) * scale, (y + 2) * scale, Colour);
+//        RenderUtils.drawRect((x - 150 + Percentage * 3) * scale, y * scale, (x + 150) * scale, (y + 2) * scale, 0x77000000);
+
+
+        RenderUtils.drawRect((x - 75) * scale, y * scale, (x - 75 + Percentage * 3) * scale, (y + 2) * scale, Colour);
+        RenderUtils.drawRect((x - 75 + Percentage * 3) * scale, y * scale, (x + 75) * scale, (y + 2) * scale, 0x77000000);
+
         GL11.glScalef(scale, scale, scale);
 
         Ref.mc.fontRenderer.drawString(msg, (x - Ref.mc.fontRenderer.getStringWidth(msg) / 2), y + 4, Colour);
         Ref.mc.fontRenderer.drawString(profession, (x - Ref.mc.fontRenderer.getStringWidth(profession) / 2), y - 10, Colour);
-        GlStateManager.enableBlend();
     }
 
     public static void showXP() {
@@ -100,8 +103,8 @@ public class HudExperienceBar extends WynnpendiumGuiFeature {
 
         GlStateManager.disableBlend();
         GL11.glScalef((float) Math.pow(scale, -1), (float) Math.pow(scale, -1), (float) Math.pow(scale, -1));
-        RenderUtils.drawRect((x - 150) * scale, y * scale, (x - 150 + Percentage * 3) * scale, (y + 2) * scale, Colour);
-        RenderUtils.drawRect((x - 150 + Percentage * 3) * scale, y * scale, (x + 150) * scale, (y + 2) * scale, 0x77000000);
+        RenderUtils.drawRect((x - 75) * scale, y * scale, (x - 75 + Percentage * 3) * scale, (y + 2) * scale, Colour);
+        RenderUtils.drawRect((x - 75 + Percentage * 3) * scale, y * scale, (x + 75) * scale, (y + 2) * scale, 0x77000000);
         GL11.glScalef(scale, scale, scale);
 
         Ref.mc.fontRenderer.drawString(msg, (x - Ref.mc.fontRenderer.getStringWidth(msg) / 2), y + 4, Colour);

@@ -22,6 +22,7 @@ public class WynnItemManager {
             this.repeats = RequisiteCompound.contains("R");
             this.essential = RequisiteCompound.contains("E");
         }
+
     }
 
     static void load(List<String> list) {

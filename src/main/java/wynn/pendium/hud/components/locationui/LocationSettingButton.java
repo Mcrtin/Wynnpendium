@@ -9,6 +9,7 @@ import org.lwjgl.input.Mouse;
 
 import net.minecraft.client.Minecraft;
 import wynn.pendium.hud.components.ButtonComponent;
+import wynn.pendium.hud.components.features.ComponentToolDurability;
 import wynn.pendium.hud.components.features.WynnpendiumGuiFeature;
 import wynn.pendium.hud.utils.ColorCode;
 import wynn.pendium.hud.utils.RenderUtils;
@@ -43,6 +44,8 @@ public class LocationSettingButton extends ButtonComponent {
         float scale = 1.0f;
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
+
+
 
         feature.renderDummy(feature.getX(), feature.getY(), mc);
         GlStateManager.popMatrix();

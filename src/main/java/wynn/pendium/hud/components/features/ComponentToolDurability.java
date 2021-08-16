@@ -10,6 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import wynn.pendium.Ref;
 import wynn.pendium.professor.NodeType;
+import wynn.pendium.professor.toolHud.PercentColors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,8 @@ public class ComponentToolDurability extends WynnpendiumGuiFeature {
 
         if (activeTool.equals(NodeType.NONE)) return;
 
+        Colour = PercentColors.valueOf(Percentage).color.getColor();
+
 
         drawRect(x - 50, y, x - 50 + Percentage, y + 2, Colour);
         drawRect(x - 50 + Percentage, y, x + 50, y + 2, 0x77000000);
@@ -78,6 +81,8 @@ public class ComponentToolDurability extends WynnpendiumGuiFeature {
     public static void showDurability() {
         if (activeTool.equals(NodeType.NONE)) return;
 
+
+        Colour = PercentColors.valueOf(Percentage).color.getColor();
         int width = (int) (new ScaledResolution(Ref.mc).getScaledWidth() * 0.5);
         int height = (int) (new ScaledResolution(Ref.mc).getScaledHeight() * 0.5) + 25;
         drawRect(width - 50, height, width - 50 + Percentage, height + 2, Colour);
@@ -108,7 +113,7 @@ public class ComponentToolDurability extends WynnpendiumGuiFeature {
         int Percentage = 100;
 
 
-        String Durability = "100";
+        String Durability = "100%";
 
 
         drawRect(x - 50, y, x - 50 + Percentage, y + 2, Colour);
@@ -122,7 +127,7 @@ public class ComponentToolDurability extends WynnpendiumGuiFeature {
 
         DisplayStack item = new DisplayStack(NodeType.MINE, new ItemStack(Items.DIAMOND_PICKAXE), 1, 3);
 
-        item.display((offset += 15), y + 20);
+        item.display((offset += 15), y - 20);
 
         GlStateManager.disableLighting();
 
@@ -134,6 +139,6 @@ public class ComponentToolDurability extends WynnpendiumGuiFeature {
     }
 
     public int getHeight() {
-        return 20;
+        return 25;
     }
 }

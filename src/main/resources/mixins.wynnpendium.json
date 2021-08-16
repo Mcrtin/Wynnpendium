@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixin.refmap.json",
+  "mixins": [
+  ],
+  "minVersion": "0.8"
+}

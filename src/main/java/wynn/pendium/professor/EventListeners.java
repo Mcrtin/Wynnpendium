@@ -15,16 +15,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
 import wynn.pendium.Ref;
-import wynn.pendium.hud.components.features.FeatureManager;
+import wynn.pendium.features.FeatureManager;
 import wynn.pendium.hud.components.features.WynnpendiumGuiFeature;
 import wynn.pendium.professor.node.NodeFarming;
 import wynn.pendium.professor.node.NodeFishing;
 import wynn.pendium.professor.node.NodeMining;
 import wynn.pendium.professor.node.NodeWoodcutting;
 import wynn.pendium.professor.toolHud.ToolScraper;
-import wynn.pendium.hud.components.features.ComponentToolDurability;
 import wynn.pendium.professor.xp.ExperienceCalculation;
-import wynn.pendium.hud.components.features.HudExperienceBar;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

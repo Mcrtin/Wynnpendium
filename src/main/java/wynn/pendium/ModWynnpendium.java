@@ -1,6 +1,7 @@
 package wynn.pendium;
 
 import net.minecraft.command.CommandHandler;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import wynn.pendium.commands.WynnpendiumCommand;
 import wynn.pendium.demolitionist.BombCore;
+import wynn.pendium.features.DroppedItemOutline;
 import wynn.pendium.gluttony.gluttony;
 import wynn.pendium.hud.Hud;
 import wynn.pendium.looter.looter;
@@ -42,6 +44,7 @@ public class ModWynnpendium
         looter.Init();
         gluttony.Init();
         BombCore.Init();
+        MinecraftForge.EVENT_BUS.register(new DroppedItemOutline());
     }
 
     @EventHandler
@@ -66,6 +69,7 @@ public class ModWynnpendium
 
     @SubscribeEvent
     public void tickEvent(TickEvent.ClientTickEvent e) {
+
         if (e.phase.equals(TickEvent.Phase.END)) return;
 
         Ref.setLobby(); // Just needs to get called to update the status

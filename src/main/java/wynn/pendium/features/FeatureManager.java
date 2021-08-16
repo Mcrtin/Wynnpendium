@@ -1,4 +1,8 @@
-package wynn.pendium.hud.components.features;
+package wynn.pendium.features;
+
+import wynn.pendium.hud.components.features.ComponentToolDurability;
+import wynn.pendium.hud.components.features.HudExperienceBar;
+import wynn.pendium.hud.components.features.WynnpendiumGuiFeature;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -8,7 +12,7 @@ public class FeatureManager {
 
 
     public static ComponentToolDurability i_componentToolDurability;
-    public static HudExperienceBar        i_hudExperienceBar;
+    public static HudExperienceBar i_hudExperienceBar;
 
     public static List<WynnpendiumGuiFeature> enabledFeatures;
 
