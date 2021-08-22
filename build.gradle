@@ -27,7 +27,7 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
-    String myJvmArgs = ""
+    String myJvmArgs = "--mixin ${mod_mixin_configs.replace('${mod_id}', mod_id)}"
     String myRunArgs = "--mixin ${mod_mixin_configs.replace('${mod_id}', mod_id)}"
     runs {
         client {
@@ -88,7 +88,7 @@ jar {
     }
 
     manifest {
-        attributes "FMLCorePluginContainsFMLMod": "false"
+        attributes "FMLCorePluginContainsFMLMod": "true"
         attributes "ForceLoadAsMod": "true"
         attributes "TweakClass": "org.spongepowered.asm.launch.MixinTweaker"
         attributes "TweakOrder": "0"

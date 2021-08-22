@@ -1,4 +1,4 @@
-package wynn.pendium.professor;
+package wynn.pendium.listeners;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,11 +16,12 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
 import wynn.pendium.Ref;
 import wynn.pendium.features.FeatureManager;
-import wynn.pendium.hud.components.features.WynnpendiumGuiFeature;
+import wynn.pendium.features.WynnpendiumGuiFeature;
 import wynn.pendium.professor.node.NodeFarming;
 import wynn.pendium.professor.node.NodeFishing;
 import wynn.pendium.professor.node.NodeMining;
 import wynn.pendium.professor.node.NodeWoodcutting;
+import wynn.pendium.professor.professor;
 import wynn.pendium.professor.toolHud.ToolScraper;
 import wynn.pendium.professor.xp.ExperienceCalculation;
 

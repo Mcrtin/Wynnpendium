@@ -2,8 +2,8 @@ package wynn.pendium.professor.toolHud;
 
 import net.minecraft.item.ItemStack;
 import wynn.pendium.Ref;
-import wynn.pendium.hud.components.features.ComponentToolDurability;
-import wynn.pendium.hud.components.features.DisplayStack;
+import wynn.pendium.features.ComponentToolDurability;
+import wynn.pendium.features.DisplayStack;
 import wynn.pendium.professor.NodeType;
 import wynn.pendium.professor.node.NodeFarming;
 import wynn.pendium.professor.node.NodeFishing;
@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static wynn.pendium.hud.components.features.ComponentToolDurability.activeTool;
-import static wynn.pendium.hud.components.features.ComponentToolDurability.hudList;
+import static wynn.pendium.features.ComponentToolDurability.activeTool;
+import static wynn.pendium.features.ComponentToolDurability.hudList;
 
 public class ToolScraper {
 

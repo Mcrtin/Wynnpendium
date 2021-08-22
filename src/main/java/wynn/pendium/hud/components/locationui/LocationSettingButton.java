@@ -1,18 +1,15 @@
 package wynn.pendium.hud.components.locationui;
 
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.input.Mouse;
 
 import net.minecraft.client.Minecraft;
 import wynn.pendium.hud.components.ButtonComponent;
-import wynn.pendium.hud.components.features.ComponentToolDurability;
-import wynn.pendium.hud.components.features.WynnpendiumGuiFeature;
-import wynn.pendium.hud.utils.ColorCode;
-import wynn.pendium.hud.utils.RenderUtils;
+import wynn.pendium.features.WynnpendiumGuiFeature;
+import wynn.pendium.utils.ColorCode;
+import wynn.pendium.utils.RenderUtils;
 
 public class LocationSettingButton extends ButtonComponent {
 

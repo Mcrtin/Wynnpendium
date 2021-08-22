@@ -1,7 +1,7 @@
 package wynn.pendium.hud.components;
 
 import net.minecraft.client.gui.GuiButton;
-import wynn.pendium.hud.components.features.WynnpendiumGuiFeature;
+import wynn.pendium.features.WynnpendiumGuiFeature;
 
 public class ButtonComponent extends GuiButton {
 

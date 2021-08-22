@@ -1,13 +1,11 @@
-package wynn.pendium.hud.components.features;
+package wynn.pendium.features;
 
-import javafx.scene.paint.Color;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 import wynn.pendium.Ref;
-import wynn.pendium.hud.utils.RenderUtils;
+import wynn.pendium.utils.RenderUtils;
 import wynn.pendium.professor.NodeType;
 
 public class HudExperienceBar extends WynnpendiumGuiFeature {
@@ -18,7 +16,7 @@ public class HudExperienceBar extends WynnpendiumGuiFeature {
     private static long LastUpdate = 0;
 
     public HudExperienceBar() {
-        super(900, 120);
+        super(900, 120, "Display Profession Experience Bar");
     }
 
     public static void updateXPBar(NodeType type, int level, int percentage) {

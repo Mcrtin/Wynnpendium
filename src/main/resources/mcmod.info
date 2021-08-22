@@ -7,7 +7,7 @@
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["EHTYCSCYTHE"],
+  "authorList": ["EHTYCSCYTHE", "Trigonometric"],
   "credits": "Thanks to Afumi for helping create the specification and getting me to actually make this thing",
   "logoFile": "",
   "screenshots": [],

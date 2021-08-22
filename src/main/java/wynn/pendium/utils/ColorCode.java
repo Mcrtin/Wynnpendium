@@ -1,4 +1,4 @@
-package wynn.pendium.hud.utils;
+package wynn.pendium.utils;
 
 
 import org.apache.commons.lang3.StringUtils;

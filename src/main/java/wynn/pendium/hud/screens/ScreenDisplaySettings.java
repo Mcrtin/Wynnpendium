@@ -5,7 +5,6 @@ import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Keyboard;
 import wynn.pendium.Ref;
 import wynn.pendium.hud.HudEvents;
-import wynn.pendium.hud.components.features.ComponentToolDurability;
 
 import java.io.IOException;
 

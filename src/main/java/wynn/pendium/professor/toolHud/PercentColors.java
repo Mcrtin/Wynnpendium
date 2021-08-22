@@ -1,6 +1,6 @@
 package wynn.pendium.professor.toolHud;
 
-import wynn.pendium.hud.utils.ColorCode;
+import wynn.pendium.utils.ColorCode;
 
 public enum PercentColors {
 

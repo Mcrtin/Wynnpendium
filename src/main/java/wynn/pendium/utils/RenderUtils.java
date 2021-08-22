@@ -1,4 +1,4 @@
-package wynn.pendium.hud.utils;
+package wynn.pendium.utils;
 
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;

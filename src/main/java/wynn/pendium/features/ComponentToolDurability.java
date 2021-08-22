@@ -1,21 +1,20 @@
-package wynn.pendium.hud.components.features;
+package wynn.pendium.features;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import wynn.pendium.Ref;
 import wynn.pendium.professor.NodeType;
 import wynn.pendium.professor.toolHud.PercentColors;
+import wynn.pendium.utils.ItemUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static wynn.pendium.hud.utils.RenderUtils.drawRect;
+import static wynn.pendium.utils.RenderUtils.drawRect;
 
 public class ComponentToolDurability extends WynnpendiumGuiFeature {
 
@@ -27,7 +26,7 @@ public class ComponentToolDurability extends WynnpendiumGuiFeature {
     public static List<DisplayStack> hudList = new ArrayList<>();
 
     public ComponentToolDurability() {
-        super(500, 645);
+        super(500, 645, "Display Tool Durability");
     }
 
     public static void update(NodeType type, String CurDur, String MaxDur) {
@@ -111,6 +110,7 @@ public class ComponentToolDurability extends WynnpendiumGuiFeature {
 //        GlStateManager.translate(x, y, 0);
 
         int Percentage = 100;
+
 
 
         String Durability = "100%";

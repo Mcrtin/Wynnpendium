@@ -10,7 +10,7 @@ import org.lwjgl.input.Mouse;
 import wynn.pendium.Ref;
 import wynn.pendium.hud.HudEvents;
 import wynn.pendium.features.FeatureManager;
-import wynn.pendium.hud.components.features.WynnpendiumGuiFeature;
+import wynn.pendium.features.WynnpendiumGuiFeature;
 import wynn.pendium.hud.components.locationui.LocationSettingButton;
 
 import java.io.IOException;

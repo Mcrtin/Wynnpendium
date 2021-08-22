@@ -1,4 +1,4 @@
-package wynn.pendium.hud.components.features;
+package wynn.pendium.features;
 
 import net.minecraft.client.Minecraft;
 import wynn.pendium.Ref;
@@ -8,19 +8,21 @@ import java.io.File;
 /**
  * Could not think of a name for this, yikes.
  */
-public abstract class WynnpendiumGuiFeature {
+public abstract class WynnpendiumGuiFeature extends Feature {
 
 
     private int x;
     private int y;
     private int defaultX, defaultY;
+    private String name;
 
-    public WynnpendiumGuiFeature(int defaultX, int defaultY) {
-
+    public WynnpendiumGuiFeature(int defaultX, int defaultY, String name) {
+        super(name);
 
 
         this.defaultX = defaultX;
         this.defaultY = defaultY;
+        this.name = name;
 
     }
 
@@ -71,5 +73,9 @@ public abstract class WynnpendiumGuiFeature {
     }
     public void setY(int y) {
         this.y = y;
+    }
+
+    public String getName() {
+        return name;
     }
 }

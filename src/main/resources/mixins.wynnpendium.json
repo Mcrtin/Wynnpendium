@@ -2,7 +2,11 @@
   "required": true,
   "compatibilityLevel": "JAVA_8",
   "refmap": "mixin.refmap.json",
+  "package": "wynn.pendium.mixins",
   "mixins": [
+    "MixinIngameGUI"
   ],
-  "minVersion": "0.8"
+  "minVersion": "0.8",
+  "client": [
+  ]
 }

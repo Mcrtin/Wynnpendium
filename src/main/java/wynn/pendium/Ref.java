@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 public class Ref {
 
     private static final Pattern ColourRegex = Pattern.compile("\\u00A7[a-z0-9]");
+    public static final String COLOR_START = "\u00A7";
 
     public static final Minecraft mc = Minecraft.getMinecraft();
 

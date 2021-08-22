@@ -10,6 +10,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -17,7 +18,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import wynn.pendium.commands.WynnpendiumCommand;
 import wynn.pendium.demolitionist.BombCore;
-import wynn.pendium.features.DroppedItemOutline;
 import wynn.pendium.gluttony.gluttony;
 import wynn.pendium.hud.Hud;
 import wynn.pendium.looter.looter;
@@ -44,8 +44,8 @@ public class ModWynnpendium
         looter.Init();
         gluttony.Init();
         BombCore.Init();
-        MinecraftForge.EVENT_BUS.register(new DroppedItemOutline());
     }
+
 
     @EventHandler
     public void init(FMLInitializationEvent event)

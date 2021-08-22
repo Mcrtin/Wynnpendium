@@ -1,4 +1,4 @@
-package wynn.pendium.hud.components.features;
+package wynn.pendium.features;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Items;

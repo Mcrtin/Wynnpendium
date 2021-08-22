@@ -1,8 +1,6 @@
 package wynn.pendium.features;
 
-import wynn.pendium.hud.components.features.ComponentToolDurability;
-import wynn.pendium.hud.components.features.HudExperienceBar;
-import wynn.pendium.hud.components.features.WynnpendiumGuiFeature;
+import wynn.pendium.features.dungeon.DungeonTokenDisplay;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -12,7 +10,8 @@ public class FeatureManager {
 
 
     public static ComponentToolDurability i_componentToolDurability;
-    public static HudExperienceBar i_hudExperienceBar;
+    public static HudExperienceBar        i_hudExperienceBar;
+    public static DungeonTokenDisplay i_dungeonTokenDisplay;
 
     public static List<WynnpendiumGuiFeature> enabledFeatures;
 
@@ -22,11 +21,20 @@ public class FeatureManager {
 
     }
 
+
+    public static void init() {
+
+    }
+
+
+
+
     static {
         enabledFeatures = new LinkedList<>();
         i_componentToolDurability = new ComponentToolDurability();
         i_hudExperienceBar = new HudExperienceBar();
-        Collections.addAll(enabledFeatures, i_componentToolDurability, i_hudExperienceBar);
+        i_dungeonTokenDisplay = new DungeonTokenDisplay();
+        Collections.addAll(enabledFeatures, i_componentToolDurability, i_hudExperienceBar, i_dungeonTokenDisplay);
     }
 
 }

@@ -22,4 +22,8 @@ public abstract class Feature {
     public boolean isEnabled() {
         return this.enabled;
     }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 }

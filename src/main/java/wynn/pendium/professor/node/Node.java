@@ -11,6 +11,9 @@ import wynn.pendium.Ref;
 import wynn.pendium.professor.NodeType;
 import wynn.pendium.professor.professor;
 
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Node {
 
     private BlockPos barrier;
@@ -280,7 +283,6 @@ public class Node {
                 RenderGlobal.renderFilledBox(pos[0] + 0.375, pos[1] + 0.125, pos[2] + 0.375, pos[0] + 0.625, pos[1] + 0.875, pos[2] + 0.625, 0f, 0, 0, 0.35f);
         }
     }
-
 
 
 

@@ -5,6 +5,7 @@ import net.minecraftforge.common.MinecraftForge;
 import wynn.pendium.Ref;
 import wynn.pendium.WebManager;
 import wynn.pendium.hud.Hud;
+import wynn.pendium.listeners.EventListeners;
 import wynn.pendium.professor.node.NodeFarming;
 import wynn.pendium.professor.node.NodeFishing;
 import wynn.pendium.professor.node.NodeMining;
